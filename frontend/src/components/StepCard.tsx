@@ -7,6 +7,14 @@ const NODE_CONFIG: Record<StepNode['type'], { color: string; label: string; focu
   aiWaitFor: { color: 'bg-yellow-500', label: '等待', focusClass: 'focus:border-yellow-500' },
   aiAssert: { color: 'bg-red-500', label: '断言', focusClass: 'focus:border-red-500' },
   aiNavigate: { color: 'bg-purple-500', label: '导航', focusClass: 'focus:border-purple-500' },
+  aiScroll: { color: 'bg-cyan-500', label: '滚动', focusClass: 'focus:border-cyan-500' },
+  aiRightClick: { color: 'bg-blue-600', label: '右键', focusClass: 'focus:border-blue-600' },
+  aiDoubleClick: { color: 'bg-blue-700', label: '双击', focusClass: 'focus:border-blue-700' },
+  aiReload: { color: 'bg-gray-500', label: '刷新', focusClass: 'focus:border-gray-500' },
+  aiQuery: { color: 'bg-orange-500', label: '查询', focusClass: 'focus:border-orange-500' },
+  aiBoolean: { color: 'bg-indigo-500', label: '布尔', focusClass: 'focus:border-indigo-500' },
+  aiNumber: { color: 'bg-teal-500', label: '数字', focusClass: 'focus:border-teal-500' },
+  aiString: { color: 'bg-pink-500', label: '文本', focusClass: 'focus:border-pink-500' },
 };
 
 const PARAM_FIELDS: Record<StepNode['type'], { key: keyof StepNode['data']['params']; placeholder: string }[]> = {
@@ -15,6 +23,14 @@ const PARAM_FIELDS: Record<StepNode['type'], { key: keyof StepNode['data']['para
   aiWaitFor: [{ key: 'target', placeholder: '等待元素选择器' }, { key: 'timeout', placeholder: '超时时间(ms)' }],
   aiAssert: [{ key: 'target', placeholder: '元素选择器' }, { key: 'value', placeholder: '期望值' }],
   aiNavigate: [{ key: 'url', placeholder: 'URL地址' }],
+  aiScroll: [{ key: 'target', placeholder: '元素选择器（可选）' }, { key: 'direction', placeholder: '滚动方向' }],
+  aiRightClick: [{ key: 'target', placeholder: '元素选择器' }],
+  aiDoubleClick: [{ key: 'target', placeholder: '元素选择器' }],
+  aiReload: [{ key: 'target', placeholder: '元素选择器（可选）' }],
+  aiQuery: [{ key: 'target', placeholder: '元素选择器' }, { key: 'returnType', placeholder: '返回类型' }],
+  aiBoolean: [{ key: 'target', placeholder: '元素选择器' }],
+  aiNumber: [{ key: 'target', placeholder: '元素选择器' }],
+  aiString: [{ key: 'target', placeholder: '元素选择器' }],
 };
 
 interface StepCardProps {

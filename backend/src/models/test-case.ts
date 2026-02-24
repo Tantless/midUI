@@ -3,11 +3,14 @@
  */
 export interface TestCaseStep {
   id: string;
-  type: 'aiTap' | 'aiInput' | 'aiWaitFor' | 'aiAssert' | 'aiNavigate';
+  type: 'aiTap' | 'aiInput' | 'aiWaitFor' | 'aiAssert' | 'aiNavigate' | 'aiScroll' | 'aiRightClick' | 'aiDoubleClick' | 'aiReload' | 'aiQuery' | 'aiBoolean' | 'aiNumber' | 'aiString';
   params: {
     target?: string;
     value?: string;
     url?: string;
+    timeout?: number;
+    returnType?: 'json' | 'boolean' | 'number' | 'string';
+    direction?: 'up' | 'down' | 'left' | 'right' | 'top' | 'bottom';
   };
 }
 

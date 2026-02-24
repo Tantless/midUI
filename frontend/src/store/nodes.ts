@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 export interface StepNode {
   id: string;
-  type: 'aiTap' | 'aiInput' | 'aiWaitFor' | 'aiAssert' | 'aiNavigate';
+  type: 'aiTap' | 'aiInput' | 'aiWaitFor' | 'aiAssert' | 'aiNavigate' | 'aiScroll' | 'aiRightClick' | 'aiDoubleClick' | 'aiReload' | 'aiQuery' | 'aiBoolean' | 'aiNumber' | 'aiString';
   position: { x: number; y: number };
   data: {
     label: string;
@@ -12,6 +12,8 @@ export interface StepNode {
       url?: string;
       selector?: string;
       timeout?: number;
+      returnType?: 'json' | 'boolean' | 'number' | 'string';
+      direction?: 'up' | 'down' | 'left' | 'right' | 'top' | 'bottom';
     };
   };
 }

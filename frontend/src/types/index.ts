@@ -7,8 +7,12 @@
  */
 export interface TestCaseStep {
   id: string;
-  type: 'aiTap' | 'aiInput' | 'aiWaitFor' | 'aiAssert' | 'aiNavigate';
-  params?: Record<string, any>;
+  type: 'aiTap' | 'aiInput' | 'aiWaitFor' | 'aiAssert' | 'aiNavigate' | 'aiScroll' | 'aiRightClick' | 'aiDoubleClick' | 'aiReload' | 'aiQuery' | 'aiBoolean' | 'aiNumber' | 'aiString';
+  params?: Record<string, any> & {
+    timeout?: number;
+    returnType?: 'json' | 'boolean' | 'number' | 'string';
+    direction?: 'up' | 'down' | 'left' | 'right' | 'top' | 'bottom';
+  };
   position: {
     x: number;
     y: number;

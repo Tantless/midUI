@@ -18,6 +18,14 @@ import {
   AiWaitForNode,
   AiAssertNode,
   AiNavigateNode,
+  AiScrollNode,
+  AiRightClickNode,
+  AiDoubleClickNode,
+  AiReloadNode,
+  AiQueryNode,
+  AiBooleanNode,
+  AiNumberNode,
+  AiStringNode,
 } from './nodes';
 
 const nodeTypes = {
@@ -26,6 +34,14 @@ const nodeTypes = {
   aiWaitFor: AiWaitForNode,
   aiAssert: AiAssertNode,
   aiNavigate: AiNavigateNode,
+  aiScroll: AiScrollNode,
+  aiRightClick: AiRightClickNode,
+  aiDoubleClick: AiDoubleClickNode,
+  aiReload: AiReloadNode,
+  aiQuery: AiQueryNode,
+  aiBoolean: AiBooleanNode,
+  aiNumber: AiNumberNode,
+  aiString: AiStringNode,
 };
 
 export const FlowCanvas = () => {
@@ -133,6 +149,30 @@ export const FlowCanvas = () => {
         case 'aiNavigate':
           if (!node.data.params.url) {
             errors.push(`${nodeLabel}缺少url参数`);
+          }
+          break;
+
+        case 'aiScroll':
+          // target可选，无强制验证
+          break;
+
+        case 'aiRightClick':
+        case 'aiDoubleClick':
+          if (!node.data.params.target) {
+            errors.push(`${nodeLabel}缺少target参数`);
+          }
+          break;
+
+        case 'aiReload':
+          // 无必填参数
+          break;
+
+        case 'aiQuery':
+        case 'aiBoolean':
+        case 'aiNumber':
+        case 'aiString':
+          if (!node.data.params.target) {
+            errors.push(`${nodeLabel}缺少target参数`);
           }
           break;
       }

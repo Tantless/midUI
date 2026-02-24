@@ -89,6 +89,42 @@ async function executeStep(
         await page.goto(params.url || '');
         break;
 
+      case 'aiScroll':
+        if (params.target) {
+          await agent.aiScroll(params.target, { direction: params.direction });
+        } else {
+          await page.evaluate(() => window.scrollBy(0, 500));
+        }
+        break;
+
+      case 'aiRightClick':
+        await agent.aiRightClick(params.target || '');
+        break;
+
+      case 'aiDoubleClick':
+        await agent.aiDoubleClick(params.target || '');
+        break;
+
+      case 'aiReload':
+        await page.reload({ waitUntil: 'networkidle' });
+        break;
+
+      case 'aiQuery':
+        const queryResult = await agent.aiQuery(params.target || '');
+        break;
+
+      case 'aiBoolean':
+        const boolResult = await agent.aiBoolean(params.target || '');
+        break;
+
+      case 'aiNumber':
+        const numResult = await agent.aiNumber(params.target || '');
+        break;
+
+      case 'aiString':
+        const strResult = await agent.aiString(params.target || '');
+        break;
+
       default:
         throw new Error(`未知的节点类型: ${type}`);
     }
